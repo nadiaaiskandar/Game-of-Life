@@ -1,6 +1,4 @@
 // Nadia Iskandar
-// APCS F
-// HW 21
 public class Canvas {
 
     private int rows;
@@ -48,7 +46,7 @@ public class Canvas {
     }
 
     public void fill(int bottom, int top, int left, int right, boolean value) {
-        // Fills a rectangle with given cooredinates for top and bottom
+        // Fills a rectangle with given coordinates for top and bottom
         // rows and for left and right columns.
         for (int row = bottom; row <= top; row++) {
             for (int column = left; column <= right; column++) {
