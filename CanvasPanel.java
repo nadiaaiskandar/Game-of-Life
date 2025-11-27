@@ -1,6 +1,4 @@
 // Nadia Iskandar
-// APCS F
-// HW 21
 import javax.swing.*;
 import java.awt.*;
 
