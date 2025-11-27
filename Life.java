@@ -1,6 +1,4 @@
 // Nadia Iskandar
-// APCS F
-// HW 21
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -65,22 +63,7 @@ public class Life {
             live(row, col);
         }
     }
-    public int getNeighbors(int row, int col) {
-        //hw 19 getNeighbors
-        int aliveNeighbors = 0;
-        for (int i = -1; i <= 1; i++) {
-            for (int j = -1; j <= 1; j++) {
 
-                if ((i + row >= 0 && i + row < rows) && (j + col >= 0 && j + col < cols)) {
-                    if (currentGen[i + row][j + col] && (i != 0 || j != 0)) {
-                        aliveNeighbors++;
-                    }
-                }
-            }
-        }
-
-        return aliveNeighbors;
-    }
 
     public void next() {
         // hw 19 next method
@@ -112,10 +95,9 @@ public class Life {
 
 
     public int getNeighbors(int row, int col, int gridType) {
-        //hw 20 getNeighbors
         int aliveNeighbors = 0;
         if (gridType == 1) {
-            // rod
+            // rod (wrap around top and bottom only)
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
 
@@ -126,31 +108,13 @@ public class Life {
 
                     }
 
-/*
-                    if (i + row < 0 && (j + col >= 0 && j + col < cols)) {
-                        if (currentGen[rows - 1][j + col]) {
-
-                            aliveNeighbors++;
-                        }
-                    } else if (i + row >= rows && (j + col >= 0 && j + col < cols)) {
-                        if (currentGen[0][j + col]) {
-                            aliveNeighbors++;
-                        }
-                    }
-
-                    if ((i + row >= 0 && i + row < rows) && (j + col >= 0 && j + col < cols)) {
-                        if (currentGen[i + row][j + col] && (i != 0 || j != 0)) {
-                            aliveNeighbors++;
-                        }
-                    } */
                 }
             }
 
             return aliveNeighbors;
 
         } else if (gridType == 2) {
-
-            // cylinder
+            // cylinder (wrap around the left and right)
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                      if(row + i >= 0 && row + i < rows){
@@ -159,67 +123,22 @@ public class Life {
                         }
                     }
 
-/*
-                    if (j + col < 0 && (i + row >= 0 && i + row < rows)) {
-
-                        if (currentGen[i + row][cols - 1]) {
-
-                            aliveNeighbors++;
-
-                        }
-                    } else if (j + col >= cols && (i + row >= 0 && i + row < rows)) {
-                        if (currentGen[i + row][0]) {
-                            aliveNeighbors++;
-
-                        }
-                    }
-
-                    if ((i + row >= 0 && i + row < rows) && (j + col >= 0 && j + col < cols)) {
-                        if (currentGen[i + row][j + col] && (i != 0 || j != 0)) {
-                            aliveNeighbors++;
-                        }
-                    }*/
                 }
             }
             return aliveNeighbors;
         } else if (gridType == 3) {
-            // torus
+            // torus (wrap around top, bottom, left right)
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
                     if (currentGen[(i + row+rows )%rows][(j + col+cols)%cols] && (i != 0 || j != 0)) {
                         aliveNeighbors++;
                     }
 
-                  /*  if (i + row < 0 && (j + col >= 0 && j + col < cols)) {
-                        if (currentGen[rows - 1][j + col]) {
-                            aliveNeighbors++;
-                        }
-                    } else if (i + row >= rows && (j + col >= 0 && j + col < cols)) {
-                        if (currentGen[0][j + col]) {
-                            aliveNeighbors++;
-                        }
-                    } else if (j + col < 0 && (i + row >= 0 && i + row < rows)) {
-                        if (currentGen[i + row][cols - 1]) {
-                            aliveNeighbors++;
-                        }
-                    } else if (j + col >= cols && (i + row >= 0 && i + row < rows)) {
-                        if (currentGen[i + row][0]) {
-                            aliveNeighbors++;
-                        }
-                    }
-
-                    if ((i + row >= 0 && i + row < rows) && (j + col >= 0 && j + col < cols)) {
-                        if (currentGen[i + row][j + col] && (i != 0 || j != 0)) {
-                            aliveNeighbors++;
-                        }
-                    } */
-
-
                 }
             }
 
-
         } else {
+            // no wrap around
             for (int i = -1; i <= 1; i++) {
                 for (int j = -1; j <= 1; j++) {
 
