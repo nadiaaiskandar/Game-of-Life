@@ -1,6 +1,4 @@
 // Nadia Iskandar
-// APCS F
-// HW 21
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,10 +15,7 @@ public  class GUI{
     public static JLabel genLabel = new JLabel();
     public static JSlider speedSlider = new JSlider();
     public Run runButton = new Run(this);
-
-
-
-
+    
     private static class Run extends JButton implements ActionListener {
 
         private final GUI gui;
